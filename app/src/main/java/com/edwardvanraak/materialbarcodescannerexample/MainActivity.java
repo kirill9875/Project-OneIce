@@ -2,6 +2,7 @@ package com.edwardvanraak.materialbarcodescannerexample;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -47,8 +48,19 @@ public class MainActivity extends AppCompatActivity {
             if(restoredBarcode != null){
                 result.setText(restoredBarcode.rawValue);
                 barcodeResult = restoredBarcode;
+//                showCode(barcodeResult);
             }
         }
+    }
+
+    private void showCode(String txt) {
+
+        Intent intent = new Intent(MainActivity.this, ProductAct.class);
+
+        intent.putExtra("barcode",txt);
+        startActivity(intent);
+
+
     }
 
     private void startScan() {
@@ -67,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
                     public void onResult(Barcode barcode) {
                         barcodeResult = barcode;
                         result.setText(barcode.rawValue);
+                        String txt = barcode.rawValue;
+                        showCode(txt);
                     }
                 })
                 .build();
