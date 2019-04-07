@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
             if(restoredBarcode != null){
                 result.setText(restoredBarcode.rawValue);
                 barcodeResult = restoredBarcode;
-//                showCode(barcodeResult);
             }
         }
     }
@@ -78,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResult(Barcode barcode) {
                         barcodeResult = barcode;
-                        result.setText(barcode.rawValue);
+                        result.setText(barcode.rawValue); // убрать с началього экрана
                         String txt = barcode.rawValue;
                         showCode(txt);
                     }
