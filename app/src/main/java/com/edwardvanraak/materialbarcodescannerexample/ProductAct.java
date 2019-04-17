@@ -4,40 +4,35 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 
 public class ProductAct extends AppCompatActivity {
+
+
+    private DatabaseReference myRef;
+    FirebaseDatabase database;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_product);
 
-         String datatxt = getIntent().getStringExtra("barcode");
+        String datatxt = getIntent().getStringExtra("barcode");
 
-        try {
-            parseJsontxt(datatxt);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
+        baseclick(datatxt);
 
     }
 
-    private void parseJsontxt(String datatxt) throws JSONException {
-        JSONObject scanQRtoJson = new JSONObject(datatxt);
-        long id = scanQRtoJson.getLong("orderID");
-
-        String name = scanQRtoJson.getString("shopperName");
-        String email = scanQRtoJson.getString("shopperEmail");
-        String url = scanQRtoJson.getString("shopperURL");
-
-        String contents = scanQRtoJson.getString("contents");
-        TextView info = (TextView)findViewById(R.id.info);
-        info.setText(contents);
-
-        String date = scanQRtoJson.getString("data");
+    private void baseclick(String datatxt) {
+        database = FirebaseDatabase.getInstance();
+        database.setPersistenceEnabled(true);
+        myRef = database.getReference("users_item").child("product");
+        myRef.push().setValue(datatxt);
 
     }
 }

@@ -17,6 +17,7 @@ import com.edwardvanraak.materialbarcodescanner.MaterialBarcodeScanner;
 import com.edwardvanraak.materialbarcodescanner.MaterialBarcodeScannerBuilder;
 import com.google.android.gms.vision.barcode.Barcode;
 
+
 import static junit.framework.Assert.assertNotNull;
 
 public class MainActivity extends AppCompatActivity {
@@ -59,13 +60,10 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("barcode",txt);
         startActivity(intent);
 
-
     }
 
     private void startScan() {
-        /**
-         * Build a new MaterialBarcodeScanner
-         */
+
         final MaterialBarcodeScanner materialBarcodeScanner = new MaterialBarcodeScannerBuilder()
                 .withActivity(MainActivity.this)
                 .withEnableAutoFocus(true)
