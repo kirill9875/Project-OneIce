@@ -11,28 +11,23 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class ProductAct extends AppCompatActivity {
 
-
     private DatabaseReference myRef;
-    FirebaseDatabase database;
-
+    private FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_product);
-
         String datatxt = getIntent().getStringExtra("barcode");
-
-        baseclick(datatxt);
-
+        postRequest(datatxt);
     }
 
-    private void baseclick(String datatxt) {
+    private void postRequest(String datatxt) {
         database = FirebaseDatabase.getInstance();
         database.setPersistenceEnabled(true);
         myRef = database.getReference("users_item").child("product");
         myRef.push().setValue(datatxt);
-
     }
+
 }
