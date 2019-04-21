@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
             if(restoredBarcode != null){
 //                result.setText(restoredBarcode.rawValue);
                 barcodeResult = restoredBarcode;
+                //test
             }
         }
     }
