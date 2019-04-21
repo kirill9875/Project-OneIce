@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "848695222504",
+    "firebase_url": "https://oneice-4a690.firebaseio.com",
+    "project_id": "oneice-4a690",
+    "storage_bucket": "oneice-4a690.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:848695222504:android:65b33e9af6440175",
+        "android_client_info": {
+          "package_name": "com.edwardvanraak.materialbarcodescanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "848695222504-9tgdpl0heqnchg08giaiop85i22r3il0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.edwardvanraak.materialbarcodescanner",
+            "certificate_hash": "0c4706849a6029bec97edbabeaebe3770c4edf68"
+          }
+        },
+        {
+          "client_id": "848695222504-02emck9a83c7vs6sidfu0350e4kmgpba.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBv1IdpZYBJVS2peb6ubsLrmj_leLgFGI8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "848695222504-02emck9a83c7vs6sidfu0350e4kmgpba.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
