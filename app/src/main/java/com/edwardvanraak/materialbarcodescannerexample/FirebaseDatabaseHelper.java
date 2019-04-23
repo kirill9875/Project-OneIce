@@ -3,6 +3,7 @@ package com.edwardvanraak.materialbarcodescannerexample;
 import android.support.annotation.NonNull;
 
 import com.edwardvanraak.materialbarcodescannerexample.madels.Product;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -49,5 +50,18 @@ public class FirebaseDatabaseHelper {
 
             }
         });
+    }
+
+    public void addProduct(Product product,final DataStatus dataStatus){
+        String key = mRefernceProduct.push().getKey();
+        mRefernceProduct.child(key).setValue(product).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                dataStatus.DataIsInserted();
+            }
+        });
+
+
+
     }
 }
