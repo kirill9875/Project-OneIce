@@ -28,7 +28,7 @@ public class RecyclerView_Config {
     class ProductItemView extends RecyclerView.ViewHolder{
         private TextView mTitle;
         private TextView mCustomer;
-        private TextView mDoc;
+        private TextView mDescription;
         private TextView mDate;
 
         private String key;
@@ -39,13 +39,13 @@ public class RecyclerView_Config {
             mTitle= (TextView) itemView.findViewById(R.id.title_txtView);
             mCustomer = (TextView) itemView.findViewById(R.id.customer_textView);
             mDate = (TextView) itemView.findViewById(R.id.date_textView);
-            mDoc = (TextView) itemView.findViewById(R.id.doc_textView);
+            mDescription = (TextView) itemView.findViewById(R.id.doc_textView);
 
         }
 
         public void bind(Product product,String key){
             mTitle.setText(product.getTitle());
-            mDoc.setText(product.getDoc());
+            mDescription.setText(product.getDescription());
             mDate.setText(product.getDate());
             mCustomer.setText(product.getCustomer());
             this.key = key;

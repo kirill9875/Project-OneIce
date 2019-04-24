@@ -18,6 +18,7 @@ public class FirebaseDatabaseHelper {
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRefernceProduct;
     private List<Product> products = new ArrayList<>();
+    List<String> keys = new ArrayList<>();
 
     public interface DataStatus{
         void DataIsLoaded (List<Product> products, List<String> keys);
@@ -36,13 +37,16 @@ public class FirebaseDatabaseHelper {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 products.clear();
-                List<String> keys = new ArrayList<>();
+
                 for (DataSnapshot keNode : dataSnapshot.getChildren()){
                    keys.add(keNode.getKey()) ;
                    Product product = keNode.getValue(Product.class);
                    products.add(product);
                 }
                 dataStatus.DataIsLoaded(products,keys);
+
+                takeKeysList();
+//                System.out.println(keys);// тот самый список ключей для сравнения
             }
 
             @Override
@@ -52,8 +56,15 @@ public class FirebaseDatabaseHelper {
         });
     }
 
+    public List<String> takeKeysList() {
+        System.out.println(keys);
+        return keys;
+
+    }
+
     public void addProduct(Product product,final DataStatus dataStatus){
         String key = mRefernceProduct.push().getKey();
+
         mRefernceProduct.child(key).setValue(product).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {

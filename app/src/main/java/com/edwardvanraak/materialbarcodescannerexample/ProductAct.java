@@ -8,6 +8,8 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.List;
+
 
 public class ProductAct extends AppCompatActivity {
 
@@ -21,20 +23,16 @@ public class ProductAct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_product);
-        txt_result = (TextView) findViewById(R.id.info);
-
         String datatxt = getIntent().getStringExtra("barcode");
-        postRequest(datatxt);
     }
 
-    private void postRequest(String datatxt) {
-        database = FirebaseDatabase.getInstance();
-//        database.setPersistenceEnabled(true);
-        myRef = database.getReference("users_item").child("product");
-        myRef.push().setValue(datatxt);
+    public void compareKeys(){
+        FirebaseDatabaseHelper getKey = new FirebaseDatabaseHelper();
 
-        txt_result.setText(datatxt);
+        List<String> ourKey = getKey.takeKeysList(); // список ключей продуктов
+
 
     }
+
 
 }

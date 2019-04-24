@@ -4,16 +4,16 @@ public class Product {
 
     private String customer;
     private String date;
-    private String doc;
+    private String description;
     private String title;
 
     public Product() {
     }
 
-    public Product(String customer, String date, String doc, String title) {
+    public Product(String customer, String date, String description, String title) {
         this.customer = customer;
         this.date = date;
-        this.doc = doc;
+        this.description = description;
         this.title = title;
     }
 
@@ -33,12 +33,12 @@ public class Product {
         this.date = date;
     }
 
-    public String getDoc() {
-        return doc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDoc(String doc) {
-        this.doc = doc;
+    public void setDoc(String description) {
+        this.description = description;
     }
 
     public String getTitle() {

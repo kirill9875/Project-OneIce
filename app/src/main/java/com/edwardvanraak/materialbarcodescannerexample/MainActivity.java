@@ -107,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void showCode(String txt) {
 
+
         Intent intent = new Intent(MainActivity.this, ProductAct.class);
 
         intent.putExtra("barcode",txt);
