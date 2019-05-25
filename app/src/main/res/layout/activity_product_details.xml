@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.edwardvanraak.materialbarcodescannerexample.madels.NewProduct">
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".ProductDetailsActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -22,28 +22,28 @@
             android:layout_width="match_parent"
             android:layout_height="62dp"
             android:ems="10"
-            android:hint="Name Products"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:text="Name Products" />
 
         <EditText
             android:id="@+id/customer_editText"
-            android:layout_width="402dp"
-            android:layout_height="65dp"
+            android:layout_width="387dp"
+            android:layout_height="88dp"
             android:ems="10"
-            android:hint="Customer"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:text="Customer" />
 
         <EditText
             android:id="@+id/date_editText"
-            android:layout_width="401dp"
-            android:layout_height="wrap_content"
+            android:layout_width="387dp"
+            android:layout_height="88dp"
             android:ems="10"
             android:inputType="date" />
 
         <TextView
             android:id="@+id/description_textView"
-            android:layout_width="86dp"
-            android:layout_height="wrap_content"
+            android:layout_width="83dp"
+            android:layout_height="44dp"
             android:text="Description" />
 
         <EditText
@@ -77,19 +77,31 @@
 
             <Button
                 android:id="@+id/update_btn"
-                android:layout_width="94dp"
-                android:layout_height="75dp"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
-                android:text="ADD" />
+                android:text="Update" />
+
+            <Button
+                android:id="@+id/delete_btn"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:text="Delete" />
 
             <Button
                 android:id="@+id/btn_back"
-                android:layout_width="95dp"
-                android:layout_height="68dp"
-                android:layout_marginLeft="190dp"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
                 android:text="back" />
+
         </LinearLayout>
 
     </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>

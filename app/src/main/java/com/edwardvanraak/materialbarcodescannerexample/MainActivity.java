@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void DataIsUpdeted() {
+            public void DataIsUpdated() {
 
             }
 

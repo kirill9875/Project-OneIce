@@ -1,13 +1,16 @@
 package com.edwardvanraak.materialbarcodescannerexample.madels;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.edwardvanraak.materialbarcodescannerexample.ProductDetailsActivity;
 import com.edwardvanraak.materialbarcodescannerexample.R;
 
 import java.util.List;
@@ -40,6 +43,20 @@ public class RecyclerView_Config {
             mCustomer = (TextView) itemView.findViewById(R.id.customer_textView);
             mDate = (TextView) itemView.findViewById(R.id.date_textView);
             mDescription = (TextView) itemView.findViewById(R.id.doc_textView);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext, ProductDetailsActivity.class);
+                    intent.putExtra("key",key);
+                    intent.putExtra("title",mTitle.getText().toString());
+                    intent.putExtra("customer",mCustomer.getText().toString());
+                    intent.putExtra("description",mDescription.getText().toString());
+                    intent.putExtra("date",mDate.getText().toString());
+
+                    mContext.startActivity(intent);
+                }
+            });
 
         }
 

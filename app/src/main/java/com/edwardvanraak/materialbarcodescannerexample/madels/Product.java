@@ -37,7 +37,7 @@ public class Product {
         return description;
     }
 
-    public void setDoc(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 

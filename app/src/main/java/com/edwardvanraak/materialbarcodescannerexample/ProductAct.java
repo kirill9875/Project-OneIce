@@ -13,9 +13,6 @@ import java.util.List;
 
 public class ProductAct extends AppCompatActivity {
 
-    private DatabaseReference myRef;
-    private FirebaseDatabase database;
-
     TextView txt_result;
 
     @Override
@@ -30,6 +27,8 @@ public class ProductAct extends AppCompatActivity {
         FirebaseDatabaseHelper getKey = new FirebaseDatabaseHelper();
 
         List<String> ourKey = getKey.takeKeysList(); // список ключей продуктов
+
+
 
 
     }

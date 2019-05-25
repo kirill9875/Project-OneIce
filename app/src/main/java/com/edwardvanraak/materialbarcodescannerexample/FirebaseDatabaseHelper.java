@@ -1,6 +1,7 @@
 package com.edwardvanraak.materialbarcodescannerexample;
 
 import android.support.annotation.NonNull;
+import android.widget.Toast;
 
 import com.edwardvanraak.materialbarcodescannerexample.madels.Product;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -8,6 +9,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -18,12 +20,14 @@ public class FirebaseDatabaseHelper {
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRefernceProduct;
     private List<Product> products = new ArrayList<>();
+
     List<String> keys = new ArrayList<>();
+    List<String> val = new ArrayList<>();
 
     public interface DataStatus{
         void DataIsLoaded (List<Product> products, List<String> keys);
         void DataIsInserted();
-        void DataIsUpdeted();
+        void DataIsUpdated();
         void DataIsDeleted();
     }
 
@@ -46,7 +50,10 @@ public class FirebaseDatabaseHelper {
                 dataStatus.DataIsLoaded(products,keys);
 
                 takeKeysList();
+
+//                System.out.println(dataSnapshot); // полный список
 //                System.out.println(keys);// тот самый список ключей для сравнения
+
             }
 
             @Override
@@ -69,10 +76,27 @@ public class FirebaseDatabaseHelper {
             @Override
             public void onSuccess(Void aVoid) {
                 dataStatus.DataIsInserted();
+
             }
         });
+    }
 
-
-
+    public void updateProduct(String key, Product product, final DataStatus dataStatus ){
+        mRefernceProduct.child(key).setValue(product)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                       dataStatus.DataIsUpdated();
+                    }
+                });
+    }
+    public void deleteProduct ( String key, final DataStatus dataStatus){
+        mRefernceProduct.child(key).setValue(null)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                      dataStatus.DataIsDeleted();
+                    }
+                });
     }
 }

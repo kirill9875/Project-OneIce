@@ -1,6 +1,5 @@
 package com.edwardvanraak.materialbarcodescannerexample.madels;
 
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +10,6 @@ import android.widget.Toast;
 
 import com.edwardvanraak.materialbarcodescannerexample.FirebaseDatabaseHelper;
 import com.edwardvanraak.materialbarcodescannerexample.R;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -38,7 +36,7 @@ public class NewProduct extends AppCompatActivity {
         mDate_editText = (EditText) findViewById(R.id.date_editText);
         mDescriptor_editText = ( EditText) findViewById(R.id.decription_editText);
 
-        mAdd_btn = (Button) findViewById(R.id.add_btn);
+        mAdd_btn = (Button) findViewById(R.id.update_btn);
         mBack_btn = (Button) findViewById(R.id.btn_back);
 
         mAdd_btn.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +45,7 @@ public class NewProduct extends AppCompatActivity {
                 Product product = new Product();
                 product.setCustomer(mCustomer_editText.getText().toString());
                 product.setDate(mDate_editText.getText().toString());
-                product.setDoc(mDescriptor_editText.getText().toString());
+                product.setDescription(mDescriptor_editText.getText().toString());
                 product.setTitle(mTitle_editText.getText().toString());
 
                 new FirebaseDatabaseHelper().addProduct(product, new FirebaseDatabaseHelper.DataStatus() {
@@ -58,12 +56,15 @@ public class NewProduct extends AppCompatActivity {
 
                     @Override
                     public void DataIsInserted() {
-                        Toast.makeText(NewProduct.this,"The product record has been inserted successfully",Toast.LENGTH_LONG);
 
+                        Toast.makeText(NewProduct.this, "Product Added", Toast.LENGTH_LONG).show();
+
+                        finish();
+                        return;
                     }
 
                     @Override
-                    public void DataIsUpdeted() {
+                    public void DataIsUpdated() {
 
                     }
 
