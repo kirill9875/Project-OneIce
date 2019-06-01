@@ -22,7 +22,6 @@ public class NewProduct extends AppCompatActivity {
     private EditText mDate_editText;
     private Button mAdd_btn;
     private Button mBack_btn;
-    private TextView mTxtDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +29,7 @@ public class NewProduct extends AppCompatActivity {
         setContentView(R.layout.activity_new_product);
 
         mTitle_editText = (EditText) findViewById(R.id.title_editText);
-        mTxtDescription = (TextView) findViewById(R.id.description_textView);
+        TextView mTxtDescription = (TextView) findViewById(R.id.description_textView);
 
         mCustomer_editText = (EditText) findViewById(R.id.customer_editText);
         mDate_editText = (EditText) findViewById(R.id.date_editText);

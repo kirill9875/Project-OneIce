@@ -1,7 +1,6 @@
 package com.edwardvanraak.materialbarcodescannerexample;
 
 import android.support.annotation.NonNull;
-import android.widget.Toast;
 
 import com.edwardvanraak.materialbarcodescannerexample.madels.Product;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -9,7 +8,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -22,7 +20,6 @@ public class FirebaseDatabaseHelper {
     private List<Product> products = new ArrayList<>();
 
     List<String> keys = new ArrayList<>();
-    List<String> val = new ArrayList<>();
 
     public interface DataStatus{
         void DataIsLoaded (List<Product> products, List<String> keys);
@@ -45,11 +42,13 @@ public class FirebaseDatabaseHelper {
                 for (DataSnapshot keNode : dataSnapshot.getChildren()){
                    keys.add(keNode.getKey()) ;
                    Product product = keNode.getValue(Product.class);
-                   products.add(product);
+                   products.add(product); // значения по ключам типа json. в sout не выведет!
+
                 }
                 dataStatus.DataIsLoaded(products,keys);
 
                 takeKeysList();
+
 
 //                System.out.println(dataSnapshot); // полный список
 //                System.out.println(keys);// тот самый список ключей для сравнения
@@ -62,6 +61,7 @@ public class FirebaseDatabaseHelper {
             }
         });
     }
+
 
     public List<String> takeKeysList() {
         System.out.println(keys);

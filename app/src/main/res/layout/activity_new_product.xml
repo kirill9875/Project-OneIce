@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="413dp"
-        android:layout_height="494dp"
+        android:layout_height="521dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,6 +38,7 @@
             android:layout_width="401dp"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="date"
             android:inputType="date" />
 
         <TextView
@@ -49,7 +50,7 @@
         <EditText
             android:id="@+id/decription_editText"
             android:layout_width="match_parent"
-            android:layout_height="211dp"
+            android:layout_height="179dp"
             android:ems="10"
             android:gravity="start|top"
             android:inputType="textMultiLine" />

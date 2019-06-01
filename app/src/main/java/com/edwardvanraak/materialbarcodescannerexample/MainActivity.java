@@ -105,15 +105,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void showCode(String txt) {
-
-
-        Intent intent = new Intent(MainActivity.this, ProductAct.class);
-
-        intent.putExtra("barcode",txt);
-        startActivity(intent);
-    }
-
     private void startScan() {
 
         final MaterialBarcodeScanner materialBarcodeScanner = new MaterialBarcodeScannerBuilder()
@@ -128,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResult(Barcode barcode) {
                         barcodeResult = barcode;
                         String txt = barcode.rawValue;
-                        showCode(txt);
+                        getQR(txt);
                     }
                 })
                 .build();
@@ -161,6 +152,15 @@ public class MainActivity extends AppCompatActivity {
                 .setMessage(R.string.no_camera_permission)
                 .setPositiveButton(android.R.string.ok, listener)
                 .show();
+    }
+
+
+    private void getQR(String txt) {
+
+
+        Intent intent = new Intent(MainActivity.this, ProductDetailsActivity.class);
+        intent.putExtra("barcode",txt);
+        startActivity(intent);
     }
 
 
