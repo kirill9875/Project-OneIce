@@ -1,20 +1,56 @@
 package com.edwardvanraak.materialbarcodescannerexample.madels;
 
+import java.io.Serializable;
+import java.net.URI;
+
 public class Product {
 
-    private String customer;
-    private String date;
+    private int orderID;
+    private String title; //productName
+    private String customer; //shopperName
+    private  String shopperEmail;
+    private  String shopperURL;
     private String description;
-    private String title;
+    private String date;
+//    private URI photoURI; // last functional
+
 
     public Product() {
     }
 
-    public Product(String customer, String date, String description, String title) {
+    public Product(String customer, String date, String description, String title, int orderID,
+                   String shopperURL, String shopperEmail) {
+        this.orderID = orderID;
         this.customer = customer;
+        this.shopperEmail = shopperEmail;
+        this.shopperURL = shopperURL;
         this.date = date;
         this.description = description;
         this.title = title;
+    }
+
+    public int getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(int orderID) {
+        this.orderID = orderID;
+    }
+
+    public String getShopperEmail() {
+        return shopperEmail;
+    }
+
+    public void setShopperEmail(String customer) {
+        this.shopperEmail = shopperEmail;
+    }
+
+    public String getShopperURL() {
+        return shopperURL;
+    }
+
+    public void setShopperURL(String shopperURL) {
+        this.shopperURL = shopperURL;
     }
 
     public String getCustomer() {

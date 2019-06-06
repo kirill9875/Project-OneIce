@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.edwardvanraak.materialbarcodescanner.MaterialBarcodeScanner;
 import com.edwardvanraak.materialbarcodescanner.MaterialBarcodeScannerBuilder;
@@ -20,8 +21,13 @@ import com.edwardvanraak.materialbarcodescannerexample.madels.NewProduct;
 import com.edwardvanraak.materialbarcodescannerexample.madels.Product;
 import com.edwardvanraak.materialbarcodescannerexample.madels.RecyclerView_Config;
 import com.google.android.gms.vision.barcode.Barcode;
-
-
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -31,9 +37,14 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
 
+    public String productName;
+
     public static final String BARCODE_KEY = "BARCODE";
+    private DatabaseReference mRefernceProduct;
 
     private Barcode barcodeResult;
+
+    public List<String> keysLists;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -41,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         readFirebase();
+        System.out.println(new FirebaseDatabaseHelper());
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_products);
 
@@ -119,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResult(Barcode barcode) {
                         barcodeResult = barcode;
                         String txt = barcode.rawValue;
-                        getQR(txt);
+                        parseJSON(txt);
                     }
                 })
                 .build();
@@ -154,14 +166,67 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
+        public void parseJSON (String str){
 
-    private void getQR(String txt) {
-
-
-        Intent intent = new Intent(MainActivity.this, ProductDetailsActivity.class);
-        intent.putExtra("barcode",txt);
-        startActivity(intent);
+        if (str != null){
+            JSONObject jsonObject = null;
+            try {
+                jsonObject = new JSONObject(str);
+                int id = jsonObject.getInt("orderID");
+                productName = jsonObject.getString("productName");
+//                compareVal(id,productName);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Toast.makeText(MainActivity.this, "QR code not find" , Toast.LENGTH_LONG).show();
+        }
     }
+
+//    private void compareVal(final int id, String name) {
+////        Integer keysDB = Integer.valueOf(key);
+//
+//        mRefernceProduct.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                for (DataSnapshot keNode : dataSnapshot.getChildren()){
+//
+//                    String keys = keNode.getKey();
+//                    assert keys != null;
+//                    Integer keysDB = Integer.valueOf(keys);
+//                    if (keysDB.equals(id)){
+//                        Toast.makeText(MainActivity.this, "product record has been updated successfullyy" , Toast.LENGTH_LONG).show();
+//                        break;
+//                    } else {
+//                        startProductAct(keysDB);
+//
+//                    }
+//
+////                    keys.add(keNode.getKey()) ;
+////                    Product product = keNode.getValue(Product.class);
+//
+//
+////                    products.add(product); // значения по ключам типа json. в sout не выведет!
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//
+//
+//    }
+
+//    private void startProductAct(int key) {
+//        Intent intent = new Intent(this, ProductDetailsActivity.class);
+//        intent.putExtra("key",key);
+//        intent.putExtra("title",productName);
+//        startActivity(intent);
+//        startActivity(new Intent(this, ProductDetailsActivity.class));
+//    }
 
 
 }

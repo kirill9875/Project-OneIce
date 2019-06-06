@@ -11,6 +11,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class FirebaseDatabaseHelper {
@@ -18,8 +19,9 @@ public class FirebaseDatabaseHelper {
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRefernceProduct;
     private List<Product> products = new ArrayList<>();
-
     List<String> keys = new ArrayList<>();
+
+
 
     public interface DataStatus{
         void DataIsLoaded (List<Product> products, List<String> keys);
@@ -47,8 +49,6 @@ public class FirebaseDatabaseHelper {
                 }
                 dataStatus.DataIsLoaded(products,keys);
 
-                takeKeysList();
-
 
 //                System.out.println(dataSnapshot); // полный список
 //                System.out.println(keys);// тот самый список ключей для сравнения
@@ -60,13 +60,17 @@ public class FirebaseDatabaseHelper {
 
             }
         });
+
+    }
+
+    public List<Product> takeProductList() {
+        return products;
     }
 
 
     public List<String> takeKeysList() {
-        System.out.println(keys);
-        return keys;
 
+        return keys;
     }
 
     public void addProduct(Product product,final DataStatus dataStatus){
