@@ -21,6 +21,8 @@ import org.json.JSONObject;
 
 import java.util.List;
 
+import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
+
 public class ProductDetailsActivity extends AppCompatActivity {
 
     private EditText mCustomer_editText;
@@ -132,7 +134,10 @@ public class ProductDetailsActivity extends AppCompatActivity {
         mBack_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();return;
+                Intent i = new Intent(ProductDetailsActivity.this, MainActivity.class);
+                i.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+
             }
         });
 

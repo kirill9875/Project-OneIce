@@ -24,6 +24,7 @@ import com.google.android.gms.vision.barcode.Barcode;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import org.json.JSONException;
@@ -37,10 +38,15 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
 
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference mRefernceProduct;
+
+
+
     public String productName;
+    private String id;
 
     public static final String BARCODE_KEY = "BARCODE";
-    private DatabaseReference mRefernceProduct;
 
     private Barcode barcodeResult;
 
@@ -172,9 +178,9 @@ public class MainActivity extends AppCompatActivity {
             JSONObject jsonObject = null;
             try {
                 jsonObject = new JSONObject(str);
-                int id = jsonObject.getInt("orderID");
+                id = jsonObject.getString("orderID");
                 productName = jsonObject.getString("productName");
-//                compareVal(id,productName);
+                compareVal(id,productName);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -183,50 +189,48 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-//    private void compareVal(final int id, String name) {
-////        Integer keysDB = Integer.valueOf(key);
-//
-//        mRefernceProduct.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                for (DataSnapshot keNode : dataSnapshot.getChildren()){
-//
-//                    String keys = keNode.getKey();
-//                    assert keys != null;
-//                    Integer keysDB = Integer.valueOf(keys);
-//                    if (keysDB.equals(id)){
-//                        Toast.makeText(MainActivity.this, "product record has been updated successfullyy" , Toast.LENGTH_LONG).show();
-//                        break;
-//                    } else {
-//                        startProductAct(keysDB);
-//
-//                    }
-//
-////                    keys.add(keNode.getKey()) ;
-////                    Product product = keNode.getValue(Product.class);
-//
-//
-////                    products.add(product); // значения по ключам типа json. в sout не выведет!
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//
-//
-//    }
+    private void compareVal(final String id, String name) {
 
-//    private void startProductAct(int key) {
-//        Intent intent = new Intent(this, ProductDetailsActivity.class);
-//        intent.putExtra("key",key);
-//        intent.putExtra("title",productName);
-//        startActivity(intent);
-//        startActivity(new Intent(this, ProductDetailsActivity.class));
-//    }
+        mDatabase = FirebaseDatabase.getInstance();
+        mRefernceProduct = mDatabase.getReference("product");
+//        Integer keysDB = Integer.valueOf(key);
 
+        mRefernceProduct.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                boolean check = false;
+                for (DataSnapshot keNode : dataSnapshot.getChildren()){
+                    String keys = keNode.getKey();
+                    assert keys != null;
+
+                    if (keys.equals(id)){
+                        check = true;
+                        Toast.makeText(MainActivity.this, "product record has been updated successfullyy" , Toast.LENGTH_LONG).show();
+                        break;
+                    }
+
+                }
+
+                if (check == false){
+                    startProductAct();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+    }
+
+    private void startProductAct() {
+        Intent intent = new Intent(this, NewProduct.class);
+        intent.putExtra("key",id);
+        intent.putExtra("title",productName);
+        startActivity(intent);
+        startActivity(new Intent(this, NewProduct.class));
+    }
 
 }
