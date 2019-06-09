@@ -43,8 +43,13 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public String productName;
+    private String productName;
     private String id;
+    private String shopperName;
+    private String shopperEmail;
+    private String shopperURL;
+    private String description;
+    private String date;
 
     public static final String BARCODE_KEY = "BARCODE";
 
@@ -180,6 +185,8 @@ public class MainActivity extends AppCompatActivity {
                 jsonObject = new JSONObject(str);
                 id = jsonObject.getString("orderID");
                 productName = jsonObject.getString("productName");
+                shopperName = jsonObject.getString("shopperName");
+
                 compareVal(id,productName);
             } catch (JSONException e) {
                 e.printStackTrace();
