@@ -205,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
 
                     if (keys.equals(id)){
                         check = true;
-                        Toast.makeText(MainActivity.this, "product record has been updated successfullyy" , Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, "product record has been updated successfully" , Toast.LENGTH_LONG).show();
                         break;
                     }
 
@@ -230,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("key",id);
         intent.putExtra("title",productName);
         startActivity(intent);
-        startActivity(new Intent(this, NewProduct.class));
+
     }
 
 }

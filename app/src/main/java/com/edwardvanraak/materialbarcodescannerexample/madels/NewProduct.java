@@ -79,9 +79,9 @@ public class NewProduct extends AppCompatActivity {
                     public void DataIsInserted() {
 
                         Toast.makeText(NewProduct.this, "Product Added", Toast.LENGTH_LONG).show();
-
-                        finish();
-                        return;
+                        Intent i = new Intent(NewProduct.this, MainActivity.class);
+                        i.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(i);
                     }
 
                     @Override
