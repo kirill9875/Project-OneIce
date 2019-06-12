@@ -6,7 +6,7 @@ import java.net.URI;
 public class Product {
 
     private int orderID;
-    private String title; //productName
+    private String productName;
     private String customer; //shopperName
     private  String shopperEmail;
     private  String shopperURL;
@@ -18,7 +18,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(String customer, String date, String description, String title, int orderID,
+    public Product(String customer, String date, String description, String productName, int orderID,
                    String shopperURL, String shopperEmail) {
         this.orderID = orderID;
         this.customer = customer;
@@ -26,22 +26,15 @@ public class Product {
         this.shopperURL = shopperURL;
         this.date = date;
         this.description = description;
-        this.title = title;
+        this.productName = productName;
     }
 
-    public int getOrderID() {
-        return orderID;
-    }
-
-    public void setOrderID(int orderID) {
-        this.orderID = orderID;
-    }
 
     public String getShopperEmail() {
         return shopperEmail;
     }
 
-    public void setShopperEmail(String customer) {
+    public void setShopperEmail(String shopperEmail) {
         this.shopperEmail = shopperEmail;
     }
 
@@ -78,10 +71,10 @@ public class Product {
     }
 
     public String getTitle() {
-        return title;
+        return productName;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitle(String productName) {
+        this.productName = productName;
     }
 }

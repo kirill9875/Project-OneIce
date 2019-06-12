@@ -244,7 +244,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, NewProduct.class);
         intent.putExtra("key",id);
         intent.putExtra("title",productName);
-//        intent.putExtra("title",productName);
+        intent.putExtra("customer",shopperName);
+        intent.putExtra("email",shopperEmail);
+        intent.putExtra("url",shopperURL);
+        intent.putExtra("description",description);
+        intent.putExtra("date",date);
         startActivity(intent);
 
     }
