@@ -186,8 +186,12 @@ public class MainActivity extends AppCompatActivity {
                 id = jsonObject.getString("orderID");
                 productName = jsonObject.getString("productName");
                 shopperName = jsonObject.getString("shopperName");
+                shopperEmail = jsonObject.getString("shopperEmail");
+                shopperURL = jsonObject.getString("shopperURL");
+                description = jsonObject.getString("description");
+                date = jsonObject.getString("date");
 
-                compareVal(id,productName);
+                compareVal(id);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -196,11 +200,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void compareVal(final String id, String name) {
+    private void compareVal(final String id) {
 
         mDatabase = FirebaseDatabase.getInstance();
         mRefernceProduct = mDatabase.getReference("product");
-//        Integer keysDB = Integer.valueOf(key);
 
         mRefernceProduct.addValueEventListener(new ValueEventListener() {
             @Override
@@ -236,6 +239,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, NewProduct.class);
         intent.putExtra("key",id);
         intent.putExtra("title",productName);
+//        intent.putExtra("title",productName);
         startActivity(intent);
 
     }

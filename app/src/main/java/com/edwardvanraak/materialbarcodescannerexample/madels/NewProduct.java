@@ -30,21 +30,21 @@ public class NewProduct extends AppCompatActivity {
 
     private String key;
     private String title;
-//    private String date;
-//    private String description;
-//    private String customer;
+    private String date;
+    private String description;
+    private String customer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_product);
-        //take intent
 
+        //take intent
         key = getIntent().getStringExtra("key");
         title = getIntent().getStringExtra("title");
-//        date = getIntent().getStringExtra("date");
-//        description = getIntent().getStringExtra("description");
-//        customer = getIntent().getStringExtra("customer");
+        date = getIntent().getStringExtra("date");
+        description = getIntent().getStringExtra("description");
+        customer = getIntent().getStringExtra("customer");
 
         mTitle_editText = (EditText) findViewById(R.id.title_editText);
         mTitle_editText.setText(title);
