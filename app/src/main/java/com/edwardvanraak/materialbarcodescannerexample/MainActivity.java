@@ -118,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "All Product deleted", Toast.LENGTH_LONG).show();
 
 
+
                     }
                 });
         }
@@ -214,6 +215,7 @@ public class MainActivity extends AppCompatActivity {
 
                 compareVal(id);
             } catch (JSONException e) {
+                compareVal(str);
                 e.printStackTrace();
             }
         } else {
@@ -236,13 +238,15 @@ public class MainActivity extends AppCompatActivity {
 
                     if (keys.equals(id)){
                         check = true;
-                        Toast.makeText(MainActivity.this, "product record has been updated successfully" , Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, "product already added" , Toast.LENGTH_LONG).show();
                         break;
                     }
+
 
                 }
 
                 if (check == false){
+                    Toast.makeText(MainActivity.this, "product not find. Please add new product" , Toast.LENGTH_LONG).show();
                     startProductAct();
                 }
             }

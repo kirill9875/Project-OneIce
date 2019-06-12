@@ -1,6 +1,7 @@
 package com.edwardvanraak.materialbarcodescannerexample;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
@@ -10,9 +11,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.edwardvanraak.materialbarcodescannerexample.madels.NewProduct;
 import com.edwardvanraak.materialbarcodescannerexample.madels.Product;
 
 import java.util.List;
+
+import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 
 
 public class ProductDetailsActivity extends AppCompatActivity {
@@ -97,7 +101,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 public void DataIsDeleted() {
 
                     Toast.makeText(ProductDetailsActivity.this, "Product deleted", Toast.LENGTH_LONG).show();
-                    finish(); return;
+                    Intent i = new Intent(ProductDetailsActivity.this, MainActivity.class);
+                    i.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(i);
 
                 }
             });
