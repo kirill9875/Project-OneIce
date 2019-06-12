@@ -136,7 +136,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 @Override
                 public void DataIsUpdated() {
                     Toast.makeText(ProductDetailsActivity.this, "product record has been updated successfullyy" , Toast.LENGTH_LONG).show();
-                    finish(); return;
+                    finish();
 
                 }
 
