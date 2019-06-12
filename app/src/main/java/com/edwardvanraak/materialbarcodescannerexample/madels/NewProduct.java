@@ -22,9 +22,14 @@ public class NewProduct extends AppCompatActivity {
 
 
     private EditText mCustomer_editText;
-    private EditText mDescriptor_editText;
     private EditText mTitle_editText;
     private EditText mDate_editText;
+    private EditText mEmails_editTxt;
+    private EditText mURL_editTxt;
+    private TextView mDescriptions_TxtView;
+    private EditText mDescriptor_editText;
+
+
     private Button mAdd_btn;
     private Button mBack_btn;
 
@@ -46,64 +51,70 @@ public class NewProduct extends AppCompatActivity {
         description = getIntent().getStringExtra("description");
         customer = getIntent().getStringExtra("customer");
 
-        mTitle_editText = (EditText) findViewById(R.id.title_editText);
+        //Name product
+        mTitle_editText = (EditText) findViewById(R.id.title_editTxt);
         mTitle_editText.setText(title);
-
-
+        //Customer
         mCustomer_editText = (EditText) findViewById(R.id.customer_editText);
-        mCustomer_editText.setText(key);
+        mCustomer_editText.setText(customer);
 
-        mDate_editText = (EditText) findViewById(R.id.date_editText);
-        mDescriptor_editText = ( EditText) findViewById(R.id.decription_editText);
+        mEmails_editTxt= ( EditText) findViewById(R.id.email_editText);
+
+        mURL_editTxt= ( EditText) findViewById(R.id.url_editText);
+
+        mDescriptions_TxtView = (TextView)findViewById(R.id.descriptions_txtView);
+        mDescriptor_editText = ( EditText) findViewById(R.id.descriptions_editText);
+
+        mDate_editText = (EditText) findViewById(R.id.date_editTxt);
 
         mAdd_btn = (Button) findViewById(R.id.update_btn);
         mBack_btn = (Button) findViewById(R.id.btn_back);
 
-        mAdd_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Product product = new Product();
-                product.setCustomer(mCustomer_editText.getText().toString());
-                product.setDate(mDate_editText.getText().toString());
-                product.setDescription(mDescriptor_editText.getText().toString());
-                product.setTitle(mTitle_editText.getText().toString());
-
-                new FirebaseDatabaseHelper().addProduct(product, new FirebaseDatabaseHelper.DataStatus() {
-                    @Override
-                    public void DataIsLoaded(List<Product> products, List<String> keys) {
-
-                    }
-
-                    @Override
-                    public void DataIsInserted() {
-
-                        Toast.makeText(NewProduct.this, "Product Added", Toast.LENGTH_LONG).show();
-                        Intent i = new Intent(NewProduct.this, MainActivity.class);
-                        i.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(i);
-                    }
-
-                    @Override
-                    public void DataIsUpdated() {
-
-                    }
-
-                    @Override
-                    public void DataIsDeleted() {
-
-                    }
-                });
-            }
-        });
-
-        mBack_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent i = new Intent(NewProduct.this, MainActivity.class);
-                i.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(i);
-            }
-        });
+//        mAdd_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Product product = new Product();
+//                product.setCustomer(mCustomer_editText.getText().toString());
+//                product.setDate(mDate_editText.getText().toString());
+//                product.setDescription(mDescriptor_editText.getText().toString());
+//                product.setTitle(mTitle_editText.getText().toString());
+//
+//                new FirebaseDatabaseHelper().addProduct(product, new FirebaseDatabaseHelper.DataStatus() {
+//                    @Override
+//                    public void DataIsLoaded(List<Product> products, List<String> keys) {
+//
+//                    }
+//
+//                    @Override
+//                    public void DataIsInserted() {
+//
+//                        Toast.makeText(NewProduct.this, "Product Added", Toast.LENGTH_LONG).show();
+//                        Intent i = new Intent(NewProduct.this, MainActivity.class);
+//                        i.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
+//                        startActivity(i);
+//                    }
+//
+//                    @Override
+//                    public void DataIsUpdated() {
+//
+//                    }
+//
+//                    @Override
+//                    public void DataIsDeleted() {
+//
+//                    }
+//                });
+//            }
+//        });
+//
+//        mBack_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent i = new Intent(NewProduct.this, MainActivity.class);
+//                i.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
+//                startActivity(i);
+//            }
+//        });
     }
 }

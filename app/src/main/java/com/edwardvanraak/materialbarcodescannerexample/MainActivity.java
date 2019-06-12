@@ -25,7 +25,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRefernceProduct;
 
-
+    private Toolbar toolbar;
 
     private String productName;
     private String id;
@@ -61,6 +60,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        //add logo in Toolbar
+//        getSupportActionBar().setIcon(getDrawable(R.mipmap.ic_launcher));
 
         readFirebase();
         System.out.println(new FirebaseDatabaseHelper());
@@ -96,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.newProduct:
+            case R.id.Addproduct:
                 startActivity(new Intent(this, NewProduct.class));
                 return true;
         }

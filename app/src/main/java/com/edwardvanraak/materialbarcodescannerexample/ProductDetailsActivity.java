@@ -52,16 +52,16 @@ public class ProductDetailsActivity extends AppCompatActivity {
         description = getIntent().getStringExtra("description");
         customer = getIntent().getStringExtra("customer");
 
-        mTitle_editText = (EditText) findViewById(R.id.title_editText);
+        mTitle_editText = (EditText) findViewById(R.id.title_editText1);
         mTitle_editText.setText(title);
 
 
         mCustomer_editText = (EditText) findViewById(R.id.customer_editText);
         mCustomer_editText.setText(customer);
-        mDate_editText = (EditText) findViewById(R.id.date_editText);
+        mDate_editText = (EditText) findViewById(R.id.date_editText1);
         mDate_editText.setText(date);
 
-        mDescriptor_editText = ( EditText) findViewById(R.id.decription_editText);
+        mDescriptor_editText = ( EditText) findViewById(R.id.decription_editText1);
         mDescriptor_editText.setText(description);
 
         mUpdate_btn = (Button) findViewById(R.id.update_btn);

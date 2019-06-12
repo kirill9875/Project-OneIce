@@ -18,7 +18,7 @@ tools:context=".ProductDetailsActivity">
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/title_editText"
+            android:id="@+id/title_editText1"
             android:layout_width="match_parent"
             android:layout_height="62dp"
             android:ems="10"
@@ -26,7 +26,7 @@ tools:context=".ProductDetailsActivity">
             android:text="Name Products" />
 
         <EditText
-            android:id="@+id/customer_editText"
+            android:id="@+id/customer_editText1"
             android:layout_width="387dp"
             android:layout_height="88dp"
             android:ems="10"
@@ -34,20 +34,20 @@ tools:context=".ProductDetailsActivity">
             android:text="Customer" />
 
         <EditText
-            android:id="@+id/date_editText"
+            android:id="@+id/date_editText1"
             android:layout_width="387dp"
             android:layout_height="88dp"
             android:ems="10"
             android:inputType="date" />
 
         <TextView
-            android:id="@+id/description_textView"
+            android:id="@+id/description_textView1"
             android:layout_width="83dp"
             android:layout_height="44dp"
             android:text="Description" />
 
         <EditText
-            android:id="@+id/decription_editText"
+            android:id="@+id/decription_editText1"
             android:layout_width="match_parent"
             android:layout_height="211dp"
             android:ems="10"

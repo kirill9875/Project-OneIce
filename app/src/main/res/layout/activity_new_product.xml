@@ -29,94 +29,91 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="529dp"
+                android:layout_height="490dp"
                 android:orientation="horizontal">
 
-                <ScrollView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                    <LinearLayout
+                    <EditText
+                        android:id="@+id/title_editTxt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_marginBottom="6sp"
+                        android:ems="10"
+                        android:hint="Name Product"
+                        android:inputType="textPersonName" />
 
-                        <EditText
-                            android:id="@+id/title_editTxt"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="6sp"
-                            android:ems="10"
-                            android:hint="Name Product"
-                            android:inputType="textPersonName" />
+                    <EditText
+                        android:id="@+id/customer_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="6sp"
+                        android:ems="10"
+                        android:hint="Customer"
+                        android:inputType="textPersonName" />
 
-                        <EditText
-                            android:id="@+id/customer_editText"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="6sp"
-                            android:ems="10"
-                            android:hint="Customer"
-                            android:inputType="textPersonName" />
+                    <EditText
+                        android:id="@+id/email_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="6sp"
+                        android:ems="10"
+                        android:hint="Email"
+                        android:inputType="textEmailAddress" />
 
-                        <EditText
-                            android:id="@+id/email_editText"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="6sp"
-                            android:ems="10"
-                            android:hint="Email"
-                            android:inputType="textEmailAddress" />
+                    <EditText
+                        android:id="@+id/url_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="6sp"
+                        android:ems="10"
+                        android:hint="URL"
+                        android:inputType="textPersonName" />
 
-                        <EditText
-                            android:id="@+id/url_editText"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="6sp"
-                            android:ems="10"
-                            android:hint="URL"
-                            android:inputType="textPersonName" />
+                    <TextView
+                        android:id="@+id/descriptions_txtView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:lineSpacingExtra="8sp"
+                        android:text="Descriptions"
+                        android:textAllCaps="false"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="#020202"
+                        android:textSize="21sp"
+                        android:textStyle="bold|italic"
+                        android:typeface="serif" />
 
-                        <TextView
-                            android:id="@+id/descriptions_txtView"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:lineSpacingExtra="8sp"
-                            android:text="Descriptions"
-                            android:textAllCaps="false"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                            android:textColor="#020202"
-                            android:textSize="21sp"
-                            android:textStyle="bold|italic"
-                            android:typeface="serif" />
+                    <EditText
+                        android:id="@+id/descriptions_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="245dp"
+                        android:layout_margin="3sp"
+                        android:ems="10"
+                        android:gravity="start|top"
+                        android:inputType="textMultiLine"
+                        android:visibility="visible" />
 
-                        <EditText
-                            android:id="@+id/descriptions_editText"
-                            android:layout_width="match_parent"
-                            android:layout_height="292dp"
-                            android:ems="10"
-                            android:gravity="start|top"
-                            android:inputType="textMultiLine"
-                            android:lines="0"
-                            android:minLines="5"
-                            android:visibility="visible" />
+                </LinearLayout>
 
-                    </LinearLayout>
-                </ScrollView>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <EditText
                     android:id="@+id/date_editTxt"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="60dp"
                     android:ems="10"
                     android:hint="date"
                     android:inputType="date" />
+
             </LinearLayout>
         </LinearLayout>
 
