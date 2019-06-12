@@ -5,6 +5,10 @@
     <item
         android:id="@+id/Addproduct"
         android:title="Add Product" />
+
+    <item
+        android:id="@+id/deleteAll_item"
+        android:title="Delete all" />
 </menu>
 
 

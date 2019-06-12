@@ -104,6 +104,29 @@ public class MainActivity extends AppCompatActivity {
             case R.id.Addproduct:
                 startActivity(new Intent(this, NewProduct.class));
                 return true;
+            case R.id.deleteAll_item :
+                new FirebaseDatabaseHelper().deleteAllProduct(new FirebaseDatabaseHelper.DataStatus() {
+                    @Override
+                    public void DataIsLoaded(List<Product> products, List<String> keys) {
+
+                    }
+                    @Override
+                    public void DataIsInserted() {
+
+                    }
+
+                    @Override
+                    public void DataIsUpdated() {
+
+                    }
+                    @Override
+                    public void DataIsDeleted() {
+
+                        Toast.makeText(MainActivity.this, "All Product deleted", Toast.LENGTH_LONG).show();
+
+
+                    }
+                });
         }
         return super.onOptionsItemSelected(item);
     }

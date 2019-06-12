@@ -49,10 +49,6 @@ public class FirebaseDatabaseHelper {
                 }
                 dataStatus.DataIsLoaded(products,keys);
 
-
-//                System.out.println(dataSnapshot); // полный список
-//                System.out.println(keys);// тот самый список ключей для сравнения
-
             }
 
             @Override
@@ -103,4 +99,26 @@ public class FirebaseDatabaseHelper {
                     }
                 });
     }
+
+    public void deleteAllProduct ( final DataStatus dataStatus){
+
+        mRefernceProduct.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
+                    appleSnapshot.getRef().removeValue();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+
 }
