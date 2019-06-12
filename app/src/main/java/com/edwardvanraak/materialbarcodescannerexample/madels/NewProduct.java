@@ -3,11 +3,15 @@ package com.edwardvanraak.materialbarcodescannerexample.madels;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import android.support.v7.widget.Toolbar;
 
 import com.edwardvanraak.materialbarcodescannerexample.FirebaseDatabaseHelper;
 import com.edwardvanraak.materialbarcodescannerexample.MainActivity;
@@ -29,9 +33,7 @@ public class NewProduct extends AppCompatActivity {
     private TextView mDescriptions_TxtView;
     private EditText mDescriptor_editText;
 
-
-    private Button mAdd_btn;
-    private Button mBack_btn;
+//    private Toolbar toolbar;
 
     private String key;
     private String title;
@@ -43,6 +45,18 @@ public class NewProduct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_product);
+
+//
+//        toolbar = (Toolbar) findViewById(R.id.toolbar2);
+//        toolbar.setNavigationIcon(R.drawable.baseline_arrow_back_24);
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(NewProduct.this, MainActivity.class);
+//                i.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
+//                startActivity(i);
+//            }
+//        });
 
         //take intent
         key = getIntent().getStringExtra("key");
@@ -67,54 +81,56 @@ public class NewProduct extends AppCompatActivity {
 
         mDate_editText = (EditText) findViewById(R.id.date_editTxt);
 
-        mAdd_btn = (Button) findViewById(R.id.update_btn);
-        mBack_btn = (Button) findViewById(R.id.btn_back);
 
-//        mAdd_btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Product product = new Product();
-//                product.setCustomer(mCustomer_editText.getText().toString());
-//                product.setDate(mDate_editText.getText().toString());
-//                product.setDescription(mDescriptor_editText.getText().toString());
-//                product.setTitle(mTitle_editText.getText().toString());
-//
-//                new FirebaseDatabaseHelper().addProduct(product, new FirebaseDatabaseHelper.DataStatus() {
-//                    @Override
-//                    public void DataIsLoaded(List<Product> products, List<String> keys) {
-//
-//                    }
-//
-//                    @Override
-//                    public void DataIsInserted() {
-//
-//                        Toast.makeText(NewProduct.this, "Product Added", Toast.LENGTH_LONG).show();
-//                        Intent i = new Intent(NewProduct.this, MainActivity.class);
-//                        i.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
-//                        startActivity(i);
-//                    }
-//
-//                    @Override
-//                    public void DataIsUpdated() {
-//
-//                    }
-//
-//                    @Override
-//                    public void DataIsDeleted() {
-//
-//                    }
-//                });
-//            }
-//        });
-//
-//        mBack_btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent i = new Intent(NewProduct.this, MainActivity.class);
-//                i.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
-//                startActivity(i);
-//            }
-//        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.newproduct_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.action_save) {
+            Product product = new Product();
+            product.setCustomer(mCustomer_editText.getText().toString());
+            product.setDate(mDate_editText.getText().toString());
+            product.setDescription(mDescriptor_editText.getText().toString());
+            product.setTitle(mTitle_editText.getText().toString());
+
+            new FirebaseDatabaseHelper().addProduct(product, new FirebaseDatabaseHelper.DataStatus() {
+                @Override
+                public void DataIsLoaded(List<Product> products, List<String> keys) {
+
+                }
+
+                @Override
+                public void DataIsInserted() {
+
+                    Toast.makeText(NewProduct.this, "Product Added", Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(NewProduct.this, MainActivity.class);
+                    i.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(i);
+                }
+
+                @Override
+                public void DataIsUpdated() {
+
+                }
+
+                @Override
+                public void DataIsDeleted() {
+
+                }
+            });
+
+        } /*else if (item.getItemId() == R.id.back_btn){
+            Intent i = new Intent(NewProduct.this, MainActivity.class);
+            i.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(i);
+        }*/
+
+        return true;
     }
 }

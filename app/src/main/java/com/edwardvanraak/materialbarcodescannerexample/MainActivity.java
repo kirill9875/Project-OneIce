@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRefernceProduct;
 
-    private Toolbar toolbar;
+//    private Toolbar toolbar;
 
     private String productName;
     private String id;
@@ -61,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
         //add logo in Toolbar
 //        getSupportActionBar().setIcon(getDrawable(R.mipmap.ic_launcher));
