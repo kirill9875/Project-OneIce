@@ -49,7 +49,6 @@ public class NewProduct extends AppCompatActivity {
         mTitle_editText = (EditText) findViewById(R.id.title_editText);
         mTitle_editText.setText(title);
 
-        TextView mTxtDescription = (TextView) findViewById(R.id.description_textView);
 
         mCustomer_editText = (EditText) findViewById(R.id.customer_editText);
         mCustomer_editText.setText(key);

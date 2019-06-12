@@ -7,90 +7,118 @@
     tools:context="com.edwardvanraak.materialbarcodescannerexample.madels.NewProduct">
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="413dp"
-        android:layout_height="521dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <EditText
-            android:id="@+id/title_editText"
-            android:layout_width="match_parent"
-            android:layout_height="62dp"
-            android:ems="10"
-            android:hint="Name Products"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/customer_editText"
-            android:layout_width="402dp"
-            android:layout_height="65dp"
-            android:ems="10"
-            android:hint="Customer"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/date_editText"
-            android:layout_width="401dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="date"
-            android:inputType="date" />
-
-        <TextView
-            android:id="@+id/description_textView"
-            android:layout_width="86dp"
-            android:layout_height="wrap_content"
-            android:text="Description" />
-
-        <EditText
-            android:id="@+id/decription_editText"
-            android:layout_width="match_parent"
-            android:layout_height="179dp"
-            android:ems="10"
-            android:gravity="start|top"
-            android:inputType="textMultiLine" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="411dp"
-        android:layout_height="72dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginRight="5dp"
-        android:orientation="vertical"
+        android:id="@+id/linearLayout5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/update_btn"
-                android:layout_width="94dp"
-                android:layout_height="75dp"
-                android:layout_marginLeft="10dp"
-                android:text="ADD" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="529dp"
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btn_back"
-                android:layout_width="95dp"
-                android:layout_height="68dp"
-                android:layout_marginLeft="190dp"
-                android:text="back" />
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/title_editTxt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="6sp"
+                            android:ems="10"
+                            android:hint="Name Product"
+                            android:inputType="textPersonName" />
+
+                        <EditText
+                            android:id="@+id/customer_editText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="6sp"
+                            android:ems="10"
+                            android:hint="Customer"
+                            android:inputType="textPersonName" />
+
+                        <EditText
+                            android:id="@+id/email_editText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="6sp"
+                            android:ems="10"
+                            android:hint="Email"
+                            android:inputType="textEmailAddress" />
+
+                        <EditText
+                            android:id="@+id/url_editText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="6sp"
+                            android:ems="10"
+                            android:hint="URL"
+                            android:inputType="textPersonName" />
+
+                        <TextView
+                            android:id="@+id/descriptions_txtView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:lineSpacingExtra="8sp"
+                            android:text="Descriptions"
+                            android:textAllCaps="false"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="#020202"
+                            android:textSize="21sp"
+                            android:textStyle="bold|italic"
+                            android:typeface="serif" />
+
+                        <EditText
+                            android:id="@+id/descriptions_editText"
+                            android:layout_width="match_parent"
+                            android:layout_height="292dp"
+                            android:ems="10"
+                            android:gravity="start|top"
+                            android:inputType="textMultiLine"
+                            android:lines="0"
+                            android:minLines="5"
+                            android:visibility="visible" />
+
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/date_editTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:hint="date"
+                    android:inputType="date" />
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
-
 </android.support.constraint.ConstraintLayout>
