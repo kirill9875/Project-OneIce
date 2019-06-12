@@ -11,7 +11,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collections;
+
 import java.util.List;
 
 public class FirebaseDatabaseHelper {
@@ -59,15 +59,6 @@ public class FirebaseDatabaseHelper {
 
     }
 
-    public List<Product> takeProductList() {
-        return products;
-    }
-
-
-    public List<String> takeKeysList() {
-
-        return keys;
-    }
 
     public void addProduct(Product product,final DataStatus dataStatus){
         String key = mRefernceProduct.push().getKey();

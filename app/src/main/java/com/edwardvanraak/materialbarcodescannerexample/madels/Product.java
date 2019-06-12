@@ -1,13 +1,10 @@
 package com.edwardvanraak.materialbarcodescannerexample.madels;
 
-import java.io.Serializable;
-import java.net.URI;
-
 public class Product {
 
     private int orderID;
     private String productName;
-    private String customer; //shopperName
+    private String customer;
     private  String shopperEmail;
     private  String shopperURL;
     private String description;
