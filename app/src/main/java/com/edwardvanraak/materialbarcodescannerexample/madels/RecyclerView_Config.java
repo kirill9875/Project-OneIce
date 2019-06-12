@@ -31,8 +31,10 @@ public class RecyclerView_Config {
     class ProductItemView extends RecyclerView.ViewHolder{
         private TextView mTitle;
         private TextView mCustomer;
-        private TextView mDescription;
         private TextView mDate;
+        private String mDescription;
+        private String mEmail;
+        private String mUrl;
 
         private String key;
 
@@ -42,7 +44,6 @@ public class RecyclerView_Config {
             mTitle= (TextView) itemView.findViewById(R.id.title_txtView);
             mCustomer = (TextView) itemView.findViewById(R.id.customer_textView);
             mDate = (TextView) itemView.findViewById(R.id.date_textView);
-            mDescription = (TextView) itemView.findViewById(R.id.doc_textView);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -51,7 +52,9 @@ public class RecyclerView_Config {
                     intent.putExtra("key",key);
                     intent.putExtra("title",mTitle.getText().toString());
                     intent.putExtra("customer",mCustomer.getText().toString());
-                    intent.putExtra("description",mDescription.getText().toString());
+                    intent.putExtra("email",mEmail);
+                    intent.putExtra("url",mUrl);
+                    intent.putExtra("description",mDescription);
                     intent.putExtra("date",mDate.getText().toString());
 
                     mContext.startActivity(intent);
@@ -62,9 +65,11 @@ public class RecyclerView_Config {
 
         public void bind(Product product,String key){
             mTitle.setText(product.getTitle());
-            mDescription.setText(product.getDescription());
-            mDate.setText(product.getDate());
             mCustomer.setText(product.getCustomer());
+            mEmail = product.getShopperEmail();
+            mDescription = product.getDescription();
+            mUrl = product.getShopperURL();
+            mDate.setText(product.getDate());
             this.key = key;
         }
     }
