@@ -1,0 +1,11 @@
+{
+  "orderID": "12345",
+  "productName": "OneIce",
+  "shopperName": "Kirill Bakurkin",
+  "shopperEmail": "kirill1098@gmail.com",
+  "shopperURL": "google.com",
+  "description": "text content",
+  "date": "21.08.2020"
+}
+
+http://qrcoder.ru/code/?%7B%0D%0A++%22orderID%22%3A+%2212345%22%2C%0D%0A++%22productName%22%3A+%22OneIce%22%2C%0D%0A++%22shopperName%22%3A+%22Kirill+Bakurkin%22%2C%0D%0A++%22shopperEmail%22%3A+%22kirill1098%40gmail.com%22%2C%0D%0A++%22shopperURL%22%3A+%22google.com%22%2C%0D%0A++%22description%22%3A+%22text+content%22%2C%0D%0A++%22date%22%3A+%2221.08.2020%22%0D%0A%7D&4&0
