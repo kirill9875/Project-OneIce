@@ -101,6 +101,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 public void DataIsDeleted() {
 
                     Toast.makeText(ProductDetailsActivity.this, "Product deleted", Toast.LENGTH_LONG).show();
+//                    finish();return;
                     Intent i = new Intent(ProductDetailsActivity.this, MainActivity.class);
                     i.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(i);
@@ -130,8 +131,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
                 @Override
                 public void DataIsUpdated() {
-                    Toast.makeText(ProductDetailsActivity.this, "product record has been updated successfullyy" , Toast.LENGTH_LONG).show();
-                    finish();
+                    Intent i = new Intent(ProductDetailsActivity.this, MainActivity.class);
+                    i.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(i);
 
                 }
 

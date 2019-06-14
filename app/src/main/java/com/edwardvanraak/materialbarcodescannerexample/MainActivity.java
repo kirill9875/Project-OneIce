@@ -242,11 +242,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     }
 
-
                 }
 
                 if (check == false){
-                    Toast.makeText(MainActivity.this, "product not find. Please add new product" , Toast.LENGTH_LONG).show();
                     startProductAct();
                 }
             }
